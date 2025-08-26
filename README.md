@@ -1,6 +1,4 @@
-# practicadevops
-Simple Pagina HTML para practica DevOps
-# 🌐 practica devops
+# 🌐 Practica DevOps
 
 Una página HTML sencilla con CI/CD completo utilizando:
 
