@@ -5,7 +5,7 @@ Una página HTML sencilla con CI/CD completo utilizando:
 - Docker
 - Jenkins
 - GitHub
-- Tests unitarios simulados (Python)
+- Tests unitarios simulados
 - AWS ECR
 - Elastic Beanstalk (Docker)
 
@@ -85,4 +85,5 @@ zip deploy.zip Dockerrun.aws.json
 
 - Proyecto generado por [Christian Jauregui]
 - Contacto: [jauregui_christian@hotmail.com]
+
 
