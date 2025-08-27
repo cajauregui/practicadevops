@@ -64,14 +64,14 @@ pipeline {
                     # Crear nueva versión de la aplicación
                      aws elasticbeanstalk create-application-version \
                       --application-name $EB_APP_NAME \
-                      --version-label $IMAGE_TAG \
+                      --version-label $VERSION_LABEL \
                       --source-bundle S3Bucket=$S3_BUCKET,S3Key=$ZIP_FILE \
                       --region $AWS_REGION
 
                     # Actualizar entorno con nueva versión
                     aws elasticbeanstalk update-environment \
                         --environment-name $EB_ENV_NAME \
-                        --version-label $IMAGE_TAG \
+                        --version-label $VERSION_LABEL \
                         --region $AWS_REGION
                     '''
                 }
