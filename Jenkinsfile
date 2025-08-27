@@ -13,7 +13,7 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 sh '''
-                    /usr/binpip install -q pytest
+                    /usr/bin/pip install -q pytest
                     /home/ec2-user/.local/bin/pytest test/
                 '''
             }
