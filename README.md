@@ -13,11 +13,13 @@ Una página HTML sencilla con CI/CD completo utilizando:
 
 ## 📁 Estructura del proyecto
 practicadevops/
-├── index.html # Página principal con html sencilla
-├── Dockerfile # Imagen que sirve HTML con nginx
-├── Jenkinsfile # Pipeline CI/CD para Jenkins
-├── Dockerrun.aws.json # Config para Elastic Beanstalk
+- index.html # Página principal con html sencilla
+- Dockerfile # Imagen que sirve HTML con nginx
+- Jenkinsfile # Pipeline CI/CD para Jenkins
+- Dockerrun.aws.json # Config para Elastic Beanstalk
 
+css/
+- styles.css # Estilos con solo una etiqueta
 
 ---
 
@@ -83,3 +85,4 @@ zip deploy.zip Dockerrun.aws.json
 
 - Proyecto generado por [Christian Jauregui]
 - Contacto: [jauregui_christian@hotmail.com]
+
