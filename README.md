@@ -28,7 +28,8 @@ css/
 1. Sirve una página HTML sencilla con Docker (nginx)
 2. Ejecuta un test simulado
 3. Construye una imagen Docker y la sube a Amazon ECR
-4. Despliega la imagen en Elastic Beanstalk (Docker con escalado automatico)
+4. Empaqueta en zip y la sube a bucket S3 de AWS
+5. Despliega la imagen en Elastic Beanstalk (Docker con escalado automatico)
 
 ---
 
@@ -85,5 +86,6 @@ zip deploy.zip Dockerrun.aws.json
 
 - Proyecto generado por [Christian Jauregui]
 - Contacto: [jauregui_christian@hotmail.com]
+
 
 
