@@ -8,7 +8,7 @@ pipeline {
         IMAGE_TAG = "latest"
         EB_APP_NAME = 'practicadevops'
         EB_ENV_NAME = 'practicadevops'
-        VERSION_LABEL = "deploy-${env.BUILD_ID}"
+        VERSION_LABEL = "practicadevops-${env.BUILD_ID}"
         ZIP_FILE = 'application.zip'
     }
 
