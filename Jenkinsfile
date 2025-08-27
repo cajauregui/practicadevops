@@ -51,9 +51,10 @@ pipeline {
                 sh '''
                     # Actualizar entorno con nueva versión
                     aws elasticbeanstalk update-environment \
-                        --environment-name $EB_ENV_NAME \
-                        --version-label $VERSION_LABEL \
-                        --region $AWS_REGION
+                    --application-name $EB_APP_NAME \
+                    --environment-name $EB_ENV_NAME \
+                    --version-label $VERSION_LABEL \
+                    --region $AWS_REGION
                     '''
                 }
             }
