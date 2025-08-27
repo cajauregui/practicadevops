@@ -9,12 +9,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/cajauregui/practicadevops.git'
-            }
-        }
-
+    
         stage('Unit Tests') {
             steps {
                 sh '''
