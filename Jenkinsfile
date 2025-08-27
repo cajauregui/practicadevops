@@ -6,6 +6,10 @@ pipeline {
         ECR_REGISTRY = "729318851051.dkr.ecr.us-east-2.amazonaws.com"
         ECR_REPO = "practicadevops"
         IMAGE_TAG = "latest"
+        EB_APP_NAME = 'practicadevops'
+        EB_ENV_NAME = 'practicadevops'
+        VERSION_LABEL = "deploy-${env.BUILD_ID}"
+        ZIP_FILE = 'application.zip'
     }
 
     stages {
@@ -35,6 +39,31 @@ pipeline {
                 '''
             }
         }
+
+        stage('Empaquetar ZIP') {
+            steps {
+                sh 'zip -r application.zip . -x "*.git*"'
+            }
+        }
+
+        stage('Deploy a Elastic Beanstalk') {
+            steps {
+                sh '''
+                    # Crear nueva versión en Beanstalk
+                    aws elasticbeanstalk create-application-version \
+                        --application-name $EB_APP_NAME \
+                        --version-label $VERSION_LABEL \
+                        --source-bundle S3Bucket=$S3_BUCKET,S3Key=$ZIP_FILE \
+                        --region $AWS_REGION
+
+                    # Actualizar entorno con nueva versión
+                    aws elasticbeanstalk update-environment \
+                        --environment-name $EB_ENV_NAME \
+                        --version-label $VERSION_LABEL \
+                        --region $AWS_REGION
+                    '''
+                }
+            }
 
         stage('Clean') {
             steps {
