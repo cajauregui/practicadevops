@@ -9,7 +9,7 @@ pipeline {
         EB_APP_NAME = 'practicadevops'
         EB_ENV_NAME = 'practicadevops'
         VERSION_LABEL = "${env.BUILD_ID}"
-        ZIP_FILE = 'deploy-${BUILD_NUMBER}.zip'
+        ZIP_FILE = "deploy-${BUILD_NUMBER}.zip"
         S3_BUCKET = 'deploypracticadevops'
     }
 
