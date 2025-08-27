@@ -49,13 +49,6 @@ pipeline {
         stage('Deploy a Elastic Beanstalk') {
             steps {
                 sh '''
-                    # Crear nueva versión en Beanstalk
-                    aws elasticbeanstalk create-application-version \
-                        --application-name $EB_APP_NAME \
-                        --version-label $VERSION_LABEL \
-                        --source-bundle S3Bucket=$S3_BUCKET,S3Key=$ZIP_FILE \
-                        --region $AWS_REGION
-
                     # Actualizar entorno con nueva versión
                     aws elasticbeanstalk update-environment \
                         --environment-name $EB_ENV_NAME \
