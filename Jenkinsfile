@@ -44,7 +44,7 @@ pipeline {
         stage('Empaquetar ZIP') {
             steps {
                sh '''
-                    echo '{"AWSEBDockerrunVersion": "1", "Image": {"Name": "${ECR_REGISTRY_URI}/${ECR_REPO_NAME}:${IMAGE_TAG}"}}' > Dockerrun.aws.json
+                    echo {"AWSEBDockerrunVersion": "1", "Image": {"Name": "${ECR_REGISTRY_URI}/${ECR_REPO_NAME}:${IMAGE_TAG}"}} > Dockerrun.aws.json
                     zip $ZIP_FILE Dockerrun.aws.json
                 '''
             }
