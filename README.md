@@ -17,8 +17,6 @@ practicadevops/
 ├── Dockerfile # Imagen que sirve HTML con nginx
 ├── Jenkinsfile # Pipeline CI/CD para Jenkins
 ├── Dockerrun.aws.json # Config para Elastic Beanstalk
-└── test/
-└── test_python.py # Test unitario simulado
 
 
 ---
@@ -26,7 +24,7 @@ practicadevops/
 ## 🚀 ¿Qué hace este proyecto?
 
 1. **Sirve una página HTML sencilla con Docker (nginx)**
-2. Ejecuta un test unitario para verificar que `index.html` existe
+2. Ejecuta un test simulado
 3. Construye una imagen Docker y la sube a Amazon ECR
 4. Despliega la imagen en Elastic Beanstalk (Docker y balanceadores de carga y escalado automatico)
 
@@ -39,11 +37,6 @@ practicadevops/
 docker build -t practicadevops .
 docker run -p 8080:80 practicadevops
 
-## Test Unitarios
-
-## Estos tests son simulados
-pip install pytest
-pytest test/
 
 🔁 Jenkins CI/CD
 
@@ -71,7 +64,6 @@ EB descargará la imagen desde ECR y la ejecutará
 
 Repositorio GitHub o el de tu preferencia
 Docker
-Python + pytest
 Jenkins
 AWS CLI configurado
 ECR Repository creado (simple-html)
@@ -81,7 +73,7 @@ Elastic Beanstalk (plataforma Docker)
 
 Docker https://docs.docker.com/
 AWS ECR https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
-AWS Elastic Beanstalk
+AWS Elastic Beanstalk https://aws.amazon.com/es/elasticbeanstalk/
 Jenkins https://www.jenkins.io/
 
 📌 Autor
