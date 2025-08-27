@@ -41,7 +41,7 @@ css/
 - docker run -p 8080:80 practicadevops
 
 
-🔁 Jenkins CI/CD
+🔁 Jenkins CI/CD aws
 
 - Pipeline definido en Jenkinsfile:
 - Clona el repositorio
@@ -86,6 +86,7 @@ zip deploy.zip Dockerrun.aws.json
 
 - Proyecto generado por [Christian Jauregui]
 - Contacto: [jauregui_christian@hotmail.com]
+
 
 
 
