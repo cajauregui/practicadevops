@@ -12,7 +12,10 @@ pipeline {
     
         stage('Unit Tests') {
             steps {
-                sh "/usr/bin/pip install -q pytest"
+                sh '''
+                    pip install -q pytest
+                    pytest test/
+                '''
             }
         }
 
