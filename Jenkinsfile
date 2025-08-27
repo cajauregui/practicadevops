@@ -9,7 +9,7 @@ pipeline {
         EB_APP_NAME = 'practicadevops'
         EB_ENV_NAME = 'practicadevops'
         VERSION_LABEL = "${env.BUILD_ID}"
-        ZIP_FILE = 'application.zip'
+        ZIP_FILE = 'deploy-${BUILD_NUMBER}.zip'
         S3_BUCKET = 'deploypracticadevops'
     }
 
@@ -61,6 +61,13 @@ pipeline {
         stage('Deploy a Elastic Beanstalk') {
             steps {
                 sh '''
+                    # Crear nueva versión de la aplicación
+                     aws elasticbeanstalk create-application-version \
+                      --application-name $EB_APP_NAME \
+                      --version-label $IMAGE_TAG \
+                      --source-bundle S3Bucket=$S3_BUCKET,S3Key=$ZIP_FILE \
+                      --region $AWS_REGION
+
                     # Actualizar entorno con nueva versión
                     aws elasticbeanstalk update-environment \
                     --application-name $EB_APP_NAME \
