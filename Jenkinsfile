@@ -44,8 +44,8 @@ pipeline {
         stage('Empaquetar ZIP') {
             steps {
                sh '''
-                    sed "s|<IMAGE_URI>|$ECR_REGISTRY/$ECR_REPO:$IMAGE_TAG|g" Dockerrun.aws.json > Dockerrun.aws.processed.json
-                    zip $ZIP_FILE Dockerrun.aws.processed.json
+                    sed "s|<IMAGE_URI>|$ECR_REGISTRY/$ECR_REPO:$IMAGE_TAG|g" Dockerrun.aws.json > Dockerrun.aws.json
+                    zip $ZIP_FILE Dockerrun.aws.json
                 '''
             }
         }
