@@ -10,6 +10,7 @@ pipeline {
         EB_ENV_NAME = 'practicadevops'
         VERSION_LABEL = "${env.BUILD_ID}"
         ZIP_FILE = 'application.zip'
+        S3_BUCKET = 'deploypracticadevops'
     }
 
     stages {
@@ -42,7 +43,18 @@ pipeline {
 
         stage('Empaquetar ZIP') {
             steps {
-                sh 'zip -r application.zip . -x "*.git*"'
+               sh '''
+                    sed "s|<IMAGE_URI>|$ECR_REGISTRY/$ECR_REPO:$IMAGE_TAG|g" Dockerrun.aws.json > Dockerrun.aws.processed.json
+                    zip $ZIP_FILE Dockerrun.aws.processed.json
+                '''
+            }
+        }
+
+        stage('Subir a S3') {
+            steps {
+                sh '''
+                    aws s3 cp $ZIP_FILE s3://$S3_BUCKET/$ZIP_FILE
+                '''
             }
         }
 
