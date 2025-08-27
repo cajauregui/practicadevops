@@ -23,10 +23,10 @@ practicadevops/
 
 ## 🚀 ¿Qué hace este proyecto?
 
-1. **Sirve una página HTML sencilla con Docker (nginx)**
+1. Sirve una página HTML sencilla con Docker (nginx)
 2. Ejecuta un test simulado
 3. Construye una imagen Docker y la sube a Amazon ECR
-4. Despliega la imagen en Elastic Beanstalk (Docker y balanceadores de carga y escalado automatico)
+4. Despliega la imagen en Elastic Beanstalk (Docker con escalado automatico)
 
 ---
 
@@ -34,19 +34,22 @@ practicadevops/
 
 ### Ejecutar localmente
 
-docker build -t practicadevops .
-docker run -p 8080:80 practicadevops
+- docker build -t practicadevops .
+- docker run -p 8080:80 practicadevops
 
 
 🔁 Jenkins CI/CD
 
-Pipeline definido en Jenkinsfile:
-Clona el repositorio
-Ejecuta los tests
-Construye y etiqueta la imagen
-Push a Amazon ECR
-(Opcional) Despliegue a Elastic Beanstalk
-Asegúrate de configurar credenciales AWS en Jenkins (con IAM Role o AWS CLI).
+- Pipeline definido en Jenkinsfile:
+- Clona el repositorio
+- Ejecuta los tests
+- Construye y etiqueta la imagen
+- Push a Amazon ECR
+- Despliegue a Elastic Beanstalk
+- Empaqueta el proyecto en un ZIP
+- Subi zip a bucket S3
+
+NOTA:Asegúrate de configurar credenciales AWS en Jenkins (con IAM Role o AWS CLI).
 
 ## Elastic beanstalk
 
@@ -54,29 +57,29 @@ Asegúrate de configurar credenciales AWS en Jenkins (con IAM Role o AWS CLI).
 zip deploy.zip Dockerrun.aws.json
 
 2. Subir a EB
-En AWS Console:
-Ve a Elastic Beanstalk
-Crea una aplicación nueva (Docker)
-Sube el ZIP
-EB descargará la imagen desde ECR y la ejecutará
+
+- Ve a Elastic Beanstalk
+- Crea una aplicación nueva (Docker)
+- Sube el ZIP
+- EB descargará la imagen desde ECR y la ejecutará
 
 🛠️ Requisitos
 
-Repositorio GitHub o el de tu preferencia
-Docker
-Jenkins
-AWS CLI configurado
-ECR Repository creado (simple-html)
-Elastic Beanstalk (plataforma Docker)
+- Repositorio GitHub o el de tu preferencia
+- Docker
+- Jenkins
+- AWS CLI configurado o asignar IAM Role a EC2 y EB
+- ECR Repository creado (practicasdevops)
+- Elastic Beanstalk (plataforma Docker)
 
 🧠 Recursos útiles
 
-Docker https://docs.docker.com/
-AWS ECR https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
-AWS Elastic Beanstalk https://aws.amazon.com/es/elasticbeanstalk/
-Jenkins https://www.jenkins.io/
+- Docker https://docs.docker.com/
+- AWS ECR https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
+- AWS Elastic Beanstalk https://aws.amazon.com/es/elasticbeanstalk/
+- Jenkins https://www.jenkins.io/
 
 📌 Autor
 
-Proyecto generado por [Christian Jauregui]
-Contacto: [jauregui_christian@hotmail.com]
+- Proyecto generado por [Christian Jauregui]
+- Contacto: [jauregui_christian@hotmail.com]
